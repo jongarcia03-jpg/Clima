@@ -29,7 +29,13 @@ def clima_ciudad(ciudad):
         return f"No se encontró la ciudad '{ciudad}'."
     temperatura = obtener_temperatura(latitud, longitud)
     if temperatura is not None:
-        return f"El clima en {ciudad} es: {temperatura}°C"
+        if temperatura < 10:
+            rango = "baja"
+        elif temperatura <= 25:
+            rango = "media"
+        else:
+            rango = "alta"
+        return f"El clima en {ciudad} es: {temperatura}°C ({rango} temperatura)"
     else:
         return "No se pudo obtener la temperatura actual."
 
